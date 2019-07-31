@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import { PasswordForgetForm } from '../PasswordForget';
-import PasswordChageForm from '../PasswordChange';
-import { withAutorization, AuthUserContext } from '../Session';
+import { PasswordForgetForm } from './PasswordForget';
+import PasswordChageForm from './PasswordChange';
+import { withAutorization, AuthUserContext } from './Session';
 
 const AccountPage = () => {
   const authUser = useContext(AuthUserContext);

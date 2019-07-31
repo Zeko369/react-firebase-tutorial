@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { withFirebase } from '../Firebase';
-import { ROUTES } from '../../constants';
+import { withFirebase } from './Firebase';
+import { ROUTES } from '../constants';
+
+const PasswordForgetPage = () => {
+  return (
+    <>
+      <h1>Password foget</h1>
+      <PasswordForgetForm />
+    </>
+  );
+};
 
 const INIT_STATE = {
-  password: '',
-  passwordConfirm: '',
+  email: '',
   error: null
 };
 
-class PasswordChangeBase extends Component {
+class PasswordForgetBase extends Component {
   constructor(props) {
     super(props);
 
@@ -27,10 +35,10 @@ class PasswordChangeBase extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const { password } = this.state;
+    const { email } = this.state;
 
     this.props.firebase
-      .doPasswordUpdate(password)
+      .doPasswordReset(email)
       .then(() => {
         this.setState({ ...INIT_STATE });
       })
@@ -38,24 +46,17 @@ class PasswordChangeBase extends Component {
   }
 
   render() {
-    const { password, passwordConfirm, error } = this.state;
-    const isInvalid = password !== passwordConfirm || password === '';
+    const { email, error } = this.state;
+    const isInvalid = email === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          type="password"
-          name="password"
-          value={password}
+          type="email"
+          name="email"
+          value={email}
           onChange={this.onChange}
-          placeholder="password"
-        />
-        <input
-          type="password"
-          name="passwordConfirm"
-          value={passwordConfirm}
-          onChange={this.onChange}
-          placeholder="passwordConfirm"
+          placeholder="email"
         />
         <button type="submit" disabled={isInvalid}>
           Reset my password
@@ -67,6 +68,15 @@ class PasswordChangeBase extends Component {
   }
 }
 
-const PasswordChangeForm = withFirebase(PasswordChangeBase);
+const PasswordForgetLink = () => {
+  return (
+    <p>
+      <Link to={ROUTES.PASSWORD_FORGET}>Forgot password?</Link>
+    </p>
+  );
+};
 
-export default PasswordChangeForm;
+const PasswordForgetForm = withFirebase(PasswordForgetBase);
+
+export default withFirebase(PasswordForgetPage);
+export { PasswordForgetLink, PasswordForgetForm };

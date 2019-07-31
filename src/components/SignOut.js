@@ -1,5 +1,5 @@
 import React from 'react';
-import { withFirebase } from '../Firebase';
+import { withFirebase } from './Firebase';
 
 const SignOut = (props) => {
   const { firebase } = props;

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import { ROUTES } from '../../constants';
-import { withFirebase } from '../Firebase';
+import { ROUTES } from '../constants';
+import { withFirebase } from './Firebase';
 
 const SignUpPage = () => {
   return (
@@ -18,10 +18,10 @@ const SignUpPage = () => {
 // context via this.context call in class
 
 const INIT_STATE = {
-  username: 'asd',
-  email: 'zekan.fran369@gmail.com',
-  password: 'foo',
-  passwordConfirm: 'foo',
+  username: '',
+  email: '',
+  password: '',
+  passwordConfirm: '',
   error: null
 };
 

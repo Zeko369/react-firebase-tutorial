@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import { withFirebase } from '../Firebase';
-import { SignUpLink } from '../SignUp';
-import { ROUTES } from '../../constants';
-import { PasswordForgetLink } from '../PasswordForget';
+import { withFirebase } from './Firebase';
+import { SignUpLink } from './SignUp';
+import { ROUTES } from '../constants';
+import { PasswordForgetLink } from './PasswordForget';
 
 const SignInPage = () => {
   return (
@@ -19,8 +19,8 @@ const SignInPage = () => {
 };
 
 const INIT_STATE = {
-  email: 'zekan.fran369@gmail.com',
-  password: 'foobar',
+  email: '',
+  password: '',
   error: null
 };
 
