@@ -23,7 +23,7 @@ app.use(cors({ origin: true }));
 // app.use(myMiddleware);
 
 // build multiple CRUD interfaces:
-app.get('/:id', (req, res) => res.send(posts.getById(req.params.id)));
+app.get('/:id', (req, res) => res.send(req.params.id));
 app.post('/', (req, res) => res.send(posts.create(req.body)));
 app.put('/:id', (req, res) => res.send(posts.update(req.params.id, req.body)));
 app.delete('/:id', (req, res) => res.send(posts.delete(req.params.id)));
