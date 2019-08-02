@@ -1,3 +1,4 @@
+import * as firebase from 'firebase';
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
@@ -27,6 +28,13 @@ class Firebase {
 
     this.user = this.user.bind(this);
     this.users = this.users.bind(this);
+
+    this.anonUserToNormal = this.anonUserToNormal.bind(this);
+  }
+
+  anonUserToNormal(email, password) {
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    return this.auth.currentUser.linkAndRetrieveDataWithCredential(credential);
   }
 
   doCreateUserWithEmailAndPassword(email, password) {
