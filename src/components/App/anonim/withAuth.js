@@ -32,8 +32,8 @@ const withAuth = (Component) => {
       this.listener();
     }
 
-    changeUser(user) {
-      this.setState({ uid: user.user.uid, isAnonymous: false });
+    changeUser(auth) {
+      this.setState({ uid: auth.user.uid, isAnonymous: false });
     }
 
     render() {
